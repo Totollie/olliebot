@@ -20,7 +20,7 @@ router.get<{}, {}>("/bio", async (req, res) => {
     await renewTwitchToken();
   }
 
-  const username = req.query.username;
+  const username = req.query.username?.toString().replace("@", "");
   console.log(`Fetching bio for ${username}`);
 
   const authParams = qs.stringify({ login: username });
